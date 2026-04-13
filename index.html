@@ -591,6 +591,108 @@ p b, p strong { color: var(--tx); }
 }
 .mat-item b { color: var(--tx); display: block; margin-bottom: 2px; }
 
+/* ─── PLANNING TABLE ─── */
+.time-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.time-table th {
+  background: var(--card);
+  color: var(--ac);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 1px solid var(--st);
+  text-align: left;
+}
+.time-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--st);
+  font-size: 13px;
+  color: var(--t2);
+  background: var(--bg2);
+}
+.time-table td:first-child { color: var(--tx); font-weight: 600; white-space: nowrap; }
+.time-table td:nth-child(3) { text-align: center; white-space: nowrap; }
+.time-table td:nth-child(4) { text-align: center; white-space: nowrap; color: var(--ac); }
+.time-table .hl td { color: var(--ac); font-weight: 700; }
+.time-table tfoot td { background: var(--card); color: var(--ac); font-weight: 700; }
+
+/* ─── CHECKLIST ─── */
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border-left: 3px solid var(--ad);
+  font-size: 13px;
+  color: var(--t2);
+}
+.check-item b { color: var(--tx); }
+.check-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ad);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ─── MAPS SECTION ─── */
+.map-container {
+  background: var(--bg2);
+  border: 1px solid var(--st);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 20px 0;
+}
+.map-container svg { width: 100%; height: auto; display: block; }
+.gmaps-bar {
+  background: var(--card);
+  border: 1px solid var(--st);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.gmaps-bar a {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #cc0000;
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: background 0.2s;
+}
+.gmaps-bar a:hover { background: #aa0000; }
+.bearing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px;
+  margin: 16px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.bearing-item { background: var(--card); padding: 12px 16px; }
+.bearing-label { font-family: var(--font-mono); font-size: 10px; color: var(--ad); letter-spacing: 1px; }
+.bearing-value { font-family: var(--font-mono); font-size: 16px; color: var(--ac); font-weight: 700; margin-top: 2px; }
+.bearing-dist { font-size: 12px; color: var(--t2); margin-top: 2px; }
+
 /* ─── DOWNLOADS ─── */
 .dl-section {
   padding: 40px 0;
@@ -692,10 +794,11 @@ footer .copy {
   <div class="container">
     <a href="#" class="brand">Controlo Total</a>
     <div class="links">
-      <a href="#cp1" class="active">CP1 Missão</a>
       <a href="#downloads">Downloads</a>
+      <a href="#planeamento">Planeamento</a>
+      <a href="#mapas">Mapas</a>
+      <a href="#cp1" class="active">CP1 Missão</a>
       <a href="#cp2-radio">CP2 Rádio</a>
-      <a href="#cp2-mapa">CP2 Mapa</a>
       <a href="#facilitador">Facilitador</a>
       <a href="#timeline">Timeline</a>
     </div>
@@ -710,40 +813,257 @@ footer .copy {
     <p style="color:var(--t2);font-size:13px">Descarrega os materiais em PDF — prontos a imprimir.</p>
 
     <div class="dl-grid">
-      <a href="/downloads/missao_completa.pdf" class="dl-card" download="Controlo_Total_Completo.pdf" target="_blank">
+      <a href="/downloads/missao_completa.pdf" class="dl-card" target="_blank">
         <div class="dl-icon">📋</div>
         <div class="dl-name">Total</div>
         <div class="dl-desc">Pack completo com todas as páginas de missão</div>
         <div class="dl-badge gold">5 páginas · PDF</div>
       </a>
 
-      <a href="/downloads/entrega_participantes.pdf" class="dl-card" download="Controlo_Total_Participantes.pdf" target="_blank">
+      <a href="/downloads/entrega_participantes.pdf" class="dl-card" target="_blank">
         <div class="dl-icon">📦</div>
         <div class="dl-name">Participantes</div>
         <div class="dl-desc">Carta de missão para entregar à equipa no CP1</div>
         <div class="dl-badge green">Entregar CP1</div>
       </a>
 
-      <a href="/downloads/mapas.pdf" class="dl-card" download="Controlo_Total_Mapas.pdf" target="_blank">
+      <a href="/downloads/mapas.pdf" class="dl-card" target="_blank">
         <div class="dl-icon">🗺️</div>
         <div class="dl-name">Mapas</div>
         <div class="dl-desc">Carta topográfica militar + rota Google Maps</div>
         <div class="dl-badge orange">2 mapas · PDF</div>
       </a>
 
-      <a href="/downloads/protocolo_radio.pdf" class="dl-card" download="Controlo_Total_Radio.pdf" target="_blank">
+      <a href="/downloads/protocolo_radio.pdf" class="dl-card" target="_blank">
         <div class="dl-icon">📡</div>
         <div class="dl-name">Protocolo Rádio</div>
         <div class="dl-desc">Mensagens codificadas para o Transmissões</div>
         <div class="dl-badge blue">Entregar CP2</div>
       </a>
 
-      <a href="/downloads/codigo.pdf" class="dl-card" download="Controlo_Total_Codigo.pdf" target="_blank">
+      <a href="/downloads/codigo.pdf" class="dl-card" target="_blank">
         <div class="dl-icon">🔐</div>
         <div class="dl-name">Código</div>
         <div class="dl-desc">Cartão com o código de acesso para mostrar 15s</div>
         <div class="dl-badge red">Só Facilitador</div>
       </a>
+    </div>
+  </div>
+
+  <!-- ═══ PLANEAMENTO DA MISSÃO ═══ -->
+  <div class="section" id="planeamento">
+    <h1>Planeamento da Missão</h1>
+    <div class="subtitle">Visão geral · Tempo · Funções · Material</div>
+
+    <h2>Resumo Operacional</h2>
+    <div class="meta-grid">
+      <div class="meta-item"><div class="meta-label">Cenário</div><div class="meta-value">Apagão Global</div></div>
+      <div class="meta-item"><div class="meta-label">Missão</div><div class="meta-value">Levar combustível à base</div></div>
+      <div class="meta-item"><div class="meta-label">Distância</div><div class="meta-value">~3.2 km</div></div>
+      <div class="meta-item"><div class="meta-label">Desnível</div><div class="meta-value">-42m (descida)</div></div>
+      <div class="meta-item"><div class="meta-label">Briefing</div><div class="meta-value">17:30</div></div>
+      <div class="meta-item"><div class="meta-label">Partida</div><div class="meta-value">17:40</div></div>
+      <div class="meta-item"><div class="meta-label">Chegada (est.)</div><div class="meta-value">19:05</div></div>
+      <div class="meta-item"><div class="meta-label">Limite Absoluto</div><div class="meta-value" style="color:#8b2020">19:15</div></div>
+    </div>
+
+    <h2>Tempo Total e Buffer</h2>
+    <table class="time-table">
+      <thead><tr><th>Fase</th><th>Descrição</th><th>Duração</th><th>Hora</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>BRIEFING</td><td>Recolha + funções + código + leitura carta</td><td>10 min</td><td>17:30–17:40</td></tr>
+        <tr><td>CP1 → CP2</td><td>Marcha urbana até ao Coreto</td><td>10 min</td><td>17:40–17:50</td></tr>
+        <tr><td>CP2 STOP</td><td>Código + rádio + entrega jerricãs</td><td>5–10 min</td><td>17:50–18:00</td></tr>
+        <tr><td>CP2 → CP3</td><td>Descida com jerricãs, ponte, terreno misto</td><td>15–20 min</td><td>18:00–18:20</td></tr>
+        <tr><td>CP3 STOP</td><td>Orientação + decisão + rádio</td><td>5 min</td><td>18:20–18:25</td></tr>
+        <tr><td>CP3 → CP4</td><td>Terreno irregular, Estrada do Casalinho</td><td>10–15 min</td><td>18:25–18:40</td></tr>
+        <tr class="hl"><td>CP4 STOP</td><td>Rádio + evacuação de ferido iniciada</td><td>5 min</td><td>18:40–18:45</td></tr>
+        <tr class="hl"><td>CP4 → CP5</td><td>Evacuação (~500m) com ferido + jerricãs</td><td>10–15 min</td><td>18:45–19:00</td></tr>
+        <tr><td>CP5</td><td>Verificação + rádio final</td><td>5 min</td><td>19:00–19:05</td></tr>
+        <tr class="hl"><td>DEBRIEF</td><td>Análise e reflexão</td><td>15–20 min</td><td>19:05–19:25</td></tr>
+      </tbody>
+      <tfoot><tr><td colspan="2">TEMPO TOTAL MISSÃO (17:40 → 19:05)</td><td>~85 min</td><td>BUFFER: 10m</td></tr></tfoot>
+    </table>
+
+    <h2>4 Funções Obrigatórias</h2>
+    <div class="roles-grid">
+      <div class="role"><div class="role-name">🔱 Team Leader</div><div class="role-desc">Decisões finais. Designa cronometrista. <b>Não manda — lidera.</b></div></div>
+      <div class="role"><div class="role-name">📡 Transmissões</div><div class="role-desc">Recebe o <b>rádio</b>. Único contacto com a base. Transmite em cada CP.</div></div>
+      <div class="role"><div class="role-name">🧭 Orientação</div><div class="role-desc">Recebe a <b>carta topográfica</b> (se fornecida). Interpreta a charada. Guia.</div></div>
+      <div class="role"><div class="role-name">⚕️ Médico</div><div class="role-desc">Monitoriza fadiga, ritmo e coesão. <b>Ninguém fica para trás.</b></div></div>
+    </div>
+
+    <h2>Checklist de Material</h2>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><div><b>Carta de missão</b> Envelope selado</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>Cartão código A4</b> 4D-KILO-BRAVO-72-FX</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>2 jerricãs 10L</b> Selados, cheios</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>2 rádios walkie-talkie</b> Equipa + facilitador</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>Saco de recolha</b> Telemóveis + relógios</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>1 relógio analógico</b> Para o cronometrista</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>Folha protocolo rádio</b> Entregar Transmissões CP2</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>Mapa topográfico</b> Decisão do Comandante</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>Kit primeiros socorros</b> Real — obrigatório</div></div>
+      <div class="check-item"><div class="check-box"></div><div><b>Cronómetro</b> 15s código + tempo geral</div></div>
+    </div>
+
+    <div class="warning">⚠ Preparação mínima 15 min antes (17:15). Facilitador auxiliar posicionado no CP4. Rádios testados. Jerricãs verificados (cheios, sem fugas, selados).</div>
+  </div>
+
+  <!-- ═══ MAPAS OPERACIONAIS ═══ -->
+  <div class="section" id="mapas">
+    <h1>Mapas Operacionais</h1>
+    <div class="subtitle">Carta topográfica + Rota Google Maps + Azimutes para bússola</div>
+
+    <h2>Carta Topográfica Militar</h2>
+    <div class="map-container">
+      <svg viewBox="0 0 1060 720" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="veg2" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.2" fill="#5a8a3a" opacity="0.3"/><circle cx="14" cy="12" r="1.2" fill="#5a8a3a" opacity="0.3"/></pattern>
+          <pattern id="grid2" width="100" height="100" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="100" stroke="#4a6a8a" stroke-width="0.3" opacity="0.5"/><line x1="0" y1="0" x2="100" y2="0" stroke="#4a6a8a" stroke-width="0.3" opacity="0.5"/></pattern>
+          <filter id="sh2"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.3"/></filter>
+        </defs>
+        <rect width="1060" height="720" fill="#f4f0e8" rx="6"/>
+        <!-- Title -->
+        <rect x="0" y="0" width="1060" height="48" fill="#2a2a2a" rx="6 6 0 0"/>
+        <text x="20" y="18" font-family="monospace" font-size="8" fill="#cc0000" letter-spacing="3" font-weight="700">▲ USO OPERACIONAL ▲</text>
+        <text x="20" y="36" font-family="Arial,sans-serif" font-size="16" fill="#e8e4dc" font-weight="700" letter-spacing="3">CARTA TOPOGRÁFICA — OPERAÇÃO CONTROLO TOTAL</text>
+        <text x="520" y="36" font-family="monospace" font-size="10" fill="#94918b" letter-spacing="1">WGS84 · UTM 29N · EQUIDIST: 10m · 17 ABR 2026</text>
+        <!-- Map area -->
+        <rect x="60" y="58" width="780" height="580" fill="#eae6dc" stroke="#2a2a2a" stroke-width="1.5"/>
+        <rect x="60" y="58" width="780" height="580" fill="url(#veg2)"/>
+        <rect x="60" y="58" width="780" height="580" fill="url(#grid2)"/>
+        <!-- Grid labels -->
+        <text x="58" y="52" font-size="7" fill="#4a6a8a" text-anchor="end">489000</text>
+        <text x="160" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">489200</text>
+        <text x="260" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">489400</text>
+        <text x="360" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">489600</text>
+        <text x="460" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">489800</text>
+        <text x="560" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">490000</text>
+        <text x="660" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">490200</text>
+        <text x="760" y="52" font-size="7" fill="#4a6a8a" text-anchor="middle">490400</text>
+        <!-- Contour lines -->
+        <path d="M60,95 C100,88 130,92 155,100" fill="none" stroke="#8B6914" stroke-width="0.6" opacity="0.6"/><text x="108" y="88" font-size="7" fill="#8B6914" opacity="0.7">170</text>
+        <path d="M60,145 C110,130 160,138 200,160 C230,175 250,190 270,210" fill="none" stroke="#8B6914" stroke-width="0.8" opacity="0.7"/><text x="135" y="132" font-size="8" fill="#8B6914" font-weight="700" opacity="0.8">160</text>
+        <path d="M60,220 C120,195 180,205 240,235 C290,258 330,280 370,310 C400,330 420,340 440,345" fill="none" stroke="#8B6914" stroke-width="1.4" opacity="0.8"/><text x="200" y="218" font-size="9" fill="#8B6914" font-weight="700">150</text>
+        <path d="M60,330 C130,295 210,310 300,350 C370,378 430,395 500,410 C550,420 590,415 630,400 C660,390 690,385 720,388 C755,392 790,400 840,410" fill="none" stroke="#8B6914" stroke-width="0.8" opacity="0.7"/><text x="340" y="360" font-size="8" fill="#8B6914" font-weight="700" opacity="0.8">140</text>
+        <path d="M60,460 C150,420 260,440 380,475 C460,498 530,505 600,490 C650,478 700,470 750,465 C790,462 820,468 840,475" fill="none" stroke="#8B6914" stroke-width="0.8" opacity="0.7"/><text x="470" y="498" font-size="8" fill="#8B6914" font-weight="700" opacity="0.8">130</text>
+        <path d="M200,580 C320,555 450,565 570,560 C650,556 720,540 790,530 C820,525 840,528" fill="none" stroke="#8B6914" stroke-width="0.8" opacity="0.7"/><text x="600" y="554" font-size="8" fill="#8B6914" font-weight="700" opacity="0.8">120</text>
+        <!-- Water -->
+        <path d="M80,340 C120,320 160,330 200,350 C240,370 280,400 340,430 C400,455 440,465 480,460 C520,455 550,440 570,420" fill="none" stroke="#2266aa" stroke-width="1.2" opacity="0.6" stroke-dasharray="6,3"/><text x="310" y="445" font-size="7" fill="#2266aa" font-style="italic" opacity="0.7">Ribeira</text>
+        <circle cx="172" cy="238" r="5" fill="none" stroke="#2266aa" stroke-width="1"/><circle cx="172" cy="238" r="2" fill="#2266aa"/><text x="180" y="234" font-size="7" fill="#2266aa" font-style="italic">Chafariz</text>
+        <!-- Roads -->
+        <path d="M60,170 C100,168 140,175 180,195 C200,205 210,215 215,225" fill="none" stroke="#666" stroke-width="2.5" opacity="0.5"/>
+        <path d="M500,395 C540,380 580,365 620,340 C660,318 700,295 740,275 C770,260 790,245 810,230" fill="none" stroke="#666" stroke-width="2" opacity="0.4"/>
+        <text x="620" y="325" font-size="7" fill="#444" transform="rotate(-25,620,325)" font-style="italic">Estr. do Casalinho</text>
+        <!-- Buildings -->
+        <rect x="120" y="192" width="10" height="8" fill="#333"/><rect x="135" y="196" width="7" height="5" fill="#333"/>
+        <text x="100" y="188" font-size="7" fill="#333" font-weight="700">U.C.R. Chamboeira</text>
+        <circle cx="210" cy="260" r="4" fill="none" stroke="#333" stroke-width="1"/><circle cx="210" cy="260" r="1.5" fill="#333"/><text x="220" y="258" font-size="7" fill="#333" font-style="italic">Coreto</text>
+        <line x1="356" y1="408" x2="376" y2="418" stroke="#333" stroke-width="2"/><line x1="358" y1="404" x2="378" y2="414" stroke="#333" stroke-width="0.8"/><line x1="358" y1="412" x2="378" y2="422" stroke="#333" stroke-width="0.8"/><text x="382" y="420" font-size="7" fill="#333" font-style="italic">Ponte</text>
+        <rect x="775" y="185" width="14" height="10" fill="#333"/><text x="793" y="193" font-size="7" fill="#333" font-weight="700">Parque Aventura Sniper</text>
+        <!-- ROUTE -->
+        <path d="M132,205 C155,215 180,230 210,260 C230,282 260,310 310,365 C360,415 390,430 440,435 C490,438 530,420 580,388 C620,362 660,330 700,295 C730,268 750,248 780,218 C790,208 795,198 790,193" fill="none" stroke="#cc0000" stroke-width="2.5" stroke-dasharray="10,4" opacity="0.85"/>
+        <polygon points="270,320 280,315 275,325" fill="#cc0000" opacity="0.7"/>
+        <polygon points="500,430 510,425 505,435" fill="#cc0000" opacity="0.7"/>
+        <polygon points="660,335 670,328 665,340" fill="#cc0000" opacity="0.7"/>
+        <polygon points="765,230 772,222 770,235" fill="#cc0000" opacity="0.7"/>
+        <!-- CPs -->
+        <circle cx="132" cy="205" r="14" fill="#cc0000" stroke="#fff" stroke-width="2" filter="url(#sh2)" opacity="0.9"/><text x="132" y="210" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="700">1</text>
+        <rect x="95" y="165" width="74" height="28" rx="3" fill="white" stroke="#cc0000" stroke-width="1" opacity="0.92"/><text x="132" y="177" font-family="Arial" font-size="8" fill="#cc0000" text-anchor="middle" font-weight="700">CP1 — PARTIDA</text><text x="132" y="188" font-family="monospace" font-size="7" fill="#333" text-anchor="middle">162m · 17:40</text>
+        <circle cx="210" cy="260" r="14" fill="#cc0000" stroke="#fff" stroke-width="2" filter="url(#sh2)" opacity="0.9"/><text x="210" y="265" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="700">2</text>
+        <rect x="224" y="248" width="72" height="28" rx="3" fill="white" stroke="#cc0000" stroke-width="1" opacity="0.92"/><text x="260" y="260" font-family="Arial" font-size="8" fill="#cc0000" text-anchor="middle" font-weight="700">CP2 — CORETO</text><text x="260" y="271" font-family="monospace" font-size="7" fill="#333" text-anchor="middle">~155m · 17:50</text>
+        <circle cx="480" cy="435" r="14" fill="#cc0000" stroke="#fff" stroke-width="2" filter="url(#sh2)" opacity="0.9"/><text x="480" y="440" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="700">3</text>
+        <rect x="494" y="420" width="90" height="28" rx="3" fill="white" stroke="#cc0000" stroke-width="1" opacity="0.92"/><text x="539" y="432" font-family="Arial" font-size="8" fill="#cc0000" text-anchor="middle" font-weight="700">CP3 — BIFURCAÇÃO</text><text x="539" y="443" font-family="monospace" font-size="7" fill="#333" text-anchor="middle">~138m · 18:20</text>
+        <circle cx="715" cy="288" r="14" fill="#8b2020" stroke="#ffcc00" stroke-width="2.5" filter="url(#sh2)" opacity="0.9"/><text x="715" y="293" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="700">4</text>
+        <rect x="648" y="260" width="90" height="28" rx="3" fill="#fff5e0" stroke="#8b2020" stroke-width="1" opacity="0.92"/><text x="693" y="272" font-family="Arial" font-size="8" fill="#8b2020" text-anchor="middle" font-weight="700">CP4 — EVACUAÇÃO</text><text x="693" y="283" font-family="monospace" font-size="7" fill="#333" text-anchor="middle">~125m · 18:40</text>
+        <circle cx="788" cy="195" r="16" fill="#8b2020" stroke="#ffcc00" stroke-width="3" filter="url(#sh2)" opacity="0.9"/><text x="788" y="200" font-family="Arial" font-size="13" fill="white" text-anchor="middle" font-weight="700">5</text>
+        <rect x="805" y="175" width="90" height="28" rx="3" fill="#fff5e0" stroke="#8b2020" stroke-width="1.5" opacity="0.92"/><text x="850" y="187" font-family="Arial" font-size="8" fill="#8b2020" text-anchor="middle" font-weight="700">CP5 — BASE SNIPER</text><text x="850" y="198" font-family="monospace" font-size="7" fill="#333" text-anchor="middle">~120m · 18:55</text>
+        <line x1="720" y1="285" x2="785" y2="200" stroke="#8b2020" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/><text x="760" y="248" font-size="8" fill="#8b2020" font-weight="700" transform="rotate(-50,760,248)">EVACUAÇÃO 500m</text>
+        <!-- Bearing boxes -->
+        <rect x="148" y="222" width="56" height="22" rx="2" fill="white" stroke="#999" stroke-width="0.5" opacity="0.85"/><text x="176" y="232" font-family="monospace" font-size="7" fill="#cc0000" text-anchor="middle" font-weight="700">AZ 112°</text><text x="176" y="241" font-family="monospace" font-size="6.5" fill="#555" text-anchor="middle">~500m</text>
+        <rect x="320" y="335" width="56" height="22" rx="2" fill="white" stroke="#999" stroke-width="0.5" opacity="0.85"/><text x="348" y="345" font-family="monospace" font-size="7" fill="#cc0000" text-anchor="middle" font-weight="700">AZ 116°</text><text x="348" y="354" font-family="monospace" font-size="6.5" fill="#555" text-anchor="middle">~1.4km</text>
+        <rect x="580" y="370" width="56" height="22" rx="2" fill="white" stroke="#999" stroke-width="0.5" opacity="0.85"/><text x="608" y="380" font-family="monospace" font-size="7" fill="#cc0000" text-anchor="middle" font-weight="700">AZ 061°</text><text x="608" y="389" font-family="monospace" font-size="6.5" fill="#555" text-anchor="middle">~800m</text>
+        <rect x="738" y="242" width="56" height="22" rx="2" fill="white" stroke="#999" stroke-width="0.5" opacity="0.85"/><text x="766" y="252" font-family="monospace" font-size="7" fill="#8b2020" text-anchor="middle" font-weight="700">AZ 067°</text><text x="766" y="261" font-family="monospace" font-size="6.5" fill="#555" text-anchor="middle">~500m</text>
+        <!-- North arrow -->
+        <g transform="translate(910,130)">
+          <circle cx="0" cy="0" r="42" fill="white" stroke="#333" stroke-width="1.5" opacity="0.9"/><circle cx="0" cy="0" r="38" fill="none" stroke="#999" stroke-width="0.5"/>
+          <line x1="0" y1="-35" x2="0" y2="35" stroke="#ccc" stroke-width="0.4"/><line x1="-35" y1="0" x2="35" y2="0" stroke="#ccc" stroke-width="0.4"/>
+          <polygon points="0,-34 -7,4 0,-4 7,4" fill="#cc0000" stroke="#880000" stroke-width="0.5"/><polygon points="0,34 -7,-4 0,4 7,-4" fill="#333" stroke="#111" stroke-width="0.5"/>
+          <line x1="0" y1="0" x2="-1" y2="-32" stroke="#2266aa" stroke-width="1.5" stroke-dasharray="3,2"/><text x="-8" y="-27" font-size="6" fill="#2266aa" font-weight="700">MN</text>
+          <text x="0" y="-40" font-family="Arial" font-size="12" fill="#cc0000" text-anchor="middle" font-weight="700">N</text>
+          <text x="0" y="48" font-family="Arial" font-size="9" fill="#333" text-anchor="middle">S</text>
+          <text x="44" y="4" font-family="Arial" font-size="9" fill="#333" text-anchor="middle">E</text>
+          <text x="-44" y="4" font-family="Arial" font-size="9" fill="#333" text-anchor="middle">W</text>
+        </g>
+        <text x="910" y="188" font-family="monospace" font-size="7" fill="#555" text-anchor="middle">Decl. Magnética</text>
+        <text x="910" y="198" font-family="monospace" font-size="8" fill="#2266aa" text-anchor="middle" font-weight="700">-1.5° W (2026)</text>
+        <!-- Scale bar -->
+        <g transform="translate(870,580)">
+          <rect x="0" y="0" width="160" height="30" fill="white" stroke="#333" stroke-width="1" rx="3" opacity="0.9"/>
+          <text x="80" y="12" font-family="monospace" font-size="8" fill="#333" text-anchor="middle" font-weight="700">ESCALA APROXIMADA</text>
+          <rect x="10" y="17" width="35" height="6" fill="#333"/><rect x="45" y="17" width="35" height="6" fill="white" stroke="#333" stroke-width="0.5"/><rect x="80" y="17" width="35" height="6" fill="#333"/><rect x="115" y="17" width="35" height="6" fill="white" stroke="#333" stroke-width="0.5"/>
+          <text x="10" y="30" font-size="7" fill="#333">0</text><text x="45" y="30" font-size="7" fill="#333">200m</text><text x="80" y="30" font-size="7" fill="#333">400m</text><text x="115" y="30" font-size="7" fill="#333">600m</text><text x="150" y="30" font-size="7" fill="#333">800m</text>
+        </g>
+        <!-- Legend -->
+        <g transform="translate(870,240)">
+          <rect x="0" y="0" width="170" height="200" fill="white" stroke="#333" stroke-width="1" rx="3" opacity="0.92"/>
+          <text x="85" y="18" font-family="Arial" font-size="10" fill="#333" text-anchor="middle" font-weight="700" letter-spacing="2">LEGENDA</text>
+          <line x1="10" y1="24" x2="160" y2="24" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="15" y1="40" x2="55" y2="40" stroke="#cc0000" stroke-width="2.5" stroke-dasharray="8,3"/><text x="62" y="43" font-size="8" fill="#333">Rota planeada</text>
+          <circle cx="25" cy="60" r="7" fill="#cc0000" stroke="white" stroke-width="1.5"/><text x="25" y="63" font-size="7" fill="white" text-anchor="middle" font-weight="700">N</text><text x="62" y="63" font-size="8" fill="#333">Checkpoint</text>
+          <circle cx="25" cy="82" r="7" fill="#8b2020" stroke="#ffcc00" stroke-width="2"/><text x="62" y="85" font-size="8" fill="#333">CP Crítico</text>
+          <path d="M15,100 C25,96 35,98 45,102" fill="none" stroke="#8B6914" stroke-width="1"/><text x="62" y="104" font-size="8" fill="#333">Curva nível (10m)</text>
+          <path d="M15,118 C25,114 35,116 45,120" fill="none" stroke="#8B6914" stroke-width="1.8"/><text x="62" y="122" font-size="8" fill="#333">Curva mestra</text>
+          <path d="M15,136 C25,132 35,134 45,138" fill="none" stroke="#2266aa" stroke-width="1" stroke-dasharray="5,2"/><text x="62" y="140" font-size="8" fill="#333">Linha de água</text>
+          <line x1="15" y1="156" x2="55" y2="156" stroke="#666" stroke-width="2.5"/><text x="62" y="159" font-size="8" fill="#333">Estrada/caminho</text>
+          <rect x="18" y="168" width="8" height="6" fill="#333"/><text x="62" y="177" font-size="8" fill="#333">Edificação</text>
+          <circle cx="25" cy="194" r="4" fill="none" stroke="#2266aa" stroke-width="0.8"/><circle cx="25" cy="194" r="1.5" fill="#2266aa"/><text x="62" y="197" font-size="8" fill="#333">Chafariz/fonte</text>
+        </g>
+        <!-- Bearing bar -->
+        <g transform="translate(60,650)">
+          <rect x="0" y="0" width="780" height="48" fill="#2a2a2a" rx="0 0 6 6"/>
+          <text x="15" y="16" font-family="monospace" font-size="8" fill="#c8a84e" font-weight="700" letter-spacing="2">AZIMUTES PARA NAVEGAÇÃO COM BÚSSOLA</text>
+          <text x="15" y="30" font-family="monospace" font-size="8" fill="#e8e4dc">CP1→CP2: AZ 112° (ESE) 500m</text>
+          <text x="240" y="30" font-family="monospace" font-size="8" fill="#e8e4dc">CP2→CP3: AZ 116° (ESE) 1.4km</text>
+          <text x="470" y="30" font-family="monospace" font-size="8" fill="#e8e4dc">CP3→CP4: AZ 061° (ENE) 800m</text>
+          <text x="15" y="42" font-family="monospace" font-size="8" fill="#e8e4dc">CP4→CP5: AZ 067° (ENE) 500m</text>
+          <text x="240" y="42" font-family="monospace" font-size="8" fill="#94918b">Decl. Mag: -1.5°W · AZ Mag = AZ Verd + 1.5°</text>
+          <text x="580" y="42" font-family="monospace" font-size="8" fill="#94918b">Total: ~3.2km</text>
+        </g>
+      </svg>
+    </div>
+
+    <h2>Rota Google Maps</h2>
+    <div class="gmaps-bar">
+      <div>
+        <p style="color:var(--t2);margin-bottom:4px"><b>Rota completa</b> — abrir no browser ou telemóvel para navegar</p>
+        <p style="font-family:var(--font-mono);font-size:11px;color:var(--mu);margin:0">maps.app.goo.gl/X5bZhhDG4bEdohiL9</p>
+      </div>
+      <a href="https://maps.app.goo.gl/X5bZhhDG4bEdohiL9" target="_blank" rel="noopener">ABRIR NO GOOGLE MAPS ↗</a>
+    </div>
+
+    <h2>Azimutes e Distâncias</h2>
+    <div class="bearing-grid">
+      <div class="bearing-item"><div class="bearing-label">CP1 → CP2</div><div class="bearing-value">AZ 112° ESE</div><div class="bearing-dist">~500m · Urbano, pavimentado</div></div>
+      <div class="bearing-item"><div class="bearing-label">CP2 → CP3</div><div class="bearing-value">AZ 116° ESE</div><div class="bearing-dist">~1.4km · Descida, ponte, terreno misto</div></div>
+      <div class="bearing-item"><div class="bearing-label">CP3 → CP4</div><div class="bearing-value">AZ 061° ENE</div><div class="bearing-dist">~800m · Terreno irregular, terra batida</div></div>
+      <div class="bearing-item"><div class="bearing-label">CP4 → CP5</div><div class="bearing-value" style="color:#8b2020">AZ 067° ENE</div><div class="bearing-dist">~500m · EVACUAÇÃO com ferido</div></div>
+    </div>
+
+    <h2>Coordenadas GPS</h2>
+    <div class="coords-grid">
+      <div class="coords-item"><div class="coords-label">CP1 · 17:40</div><div class="coords-value">38.9103°N 9.1666°W</div></div>
+      <div class="coords-item"><div class="coords-label">CP2 · 17:50</div><div class="coords-value">38.9095°N 9.1640°W</div></div>
+      <div class="coords-item"><div class="coords-label">CP3 · 18:20</div><div class="coords-value">38.9053°N 9.1530°W</div></div>
+      <div class="coords-item"><div class="coords-label">CP4 · 18:40</div><div class="coords-value">38.9098°N 9.1425°W</div></div>
+      <div class="coords-item"><div class="coords-label">CP5 · 18:55</div><div class="coords-value">38.9110°N 9.1389°W</div></div>
+    </div>
+
+    <div class="fac-note">
+      <h5>Nota de Navegação</h5>
+      <p><b>Declinação magnética:</b> -1.5° W (2026). Para converter azimute verdadeiro → magnético: somar 1.5°.</p>
+      <p><b>Exemplo:</b> CP1→CP2 AZ verdadeiro 112° → AZ magnético 113.5° na bússola.</p>
     </div>
   </div>
 
@@ -824,61 +1144,6 @@ footer .copy {
     <div class="radio-msg"><div class="radio-cp">CP5</div><div class="radio-text">«CONTROLO, aqui ALPHA-ONE. Base Sniper alcançada. Hora: [hora]. Missão concluída. Dois jerricãs entregues — carga [intacta/comprometida]. Ferido entregue. Equipa completa. Câmbio final.»</div></div>
 
     <div class="warning">⚠ Os campos entre [parênteses retos] devem ser preenchidos no momento da transmissão com a informação real. Não improvisar — seguir o formato exato.</div>
-  </div>
-
-  <!-- ═══ CP2 (OPCIONAL) — MAPA ═══ -->
-  <div class="section" id="cp2-mapa">
-    <div class="banner orange">
-      <div>
-        <div class="b-tag">📦 Documento de Entrega · Opcional</div>
-        <div class="b-info"><b>O quê:</b> Carta topográfica · <b>A quem:</b> Operacional de Orientação · <b>Quando:</b> No CP2, se o Comandante decidir facilitar</div>
-      </div>
-      <div class="b-right">CP2 (Decisão Cmd.)</div>
-    </div>
-
-    <h1>Mapa de Elevação Tático</h1>
-    <div class="subtitle">~3.2km · Desnível -42m · 5 Checkpoints · Evacuação últimos 500m</div>
-
-    <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg" class="map-svg">
-      <defs>
-        <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a5a2b" stop-opacity="0.35"/><stop offset="100%" stop-color="#0e0e0e" stop-opacity="0.95"/></linearGradient>
-        <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c8a84e"/><stop offset="60%" stop-color="#8a7235"/><stop offset="100%" stop-color="#8b2020"/></linearGradient>
-        <filter id="gl"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <pattern id="gp" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0L0 0 0 50" fill="none" stroke="#1e2124" stroke-width="0.3"/></pattern>
-      </defs>
-      <rect width="720" height="330" fill="#0b0b0b" rx="6"/><rect width="720" height="330" fill="url(#gp)"/>
-      <text x="8" y="268" font-family="monospace" font-size="7" fill="#4a4845">100m</text><text x="8" y="222" font-family="monospace" font-size="7" fill="#4a4845">120m</text><text x="8" y="176" font-family="monospace" font-size="7" fill="#4a4845">140m</text><text x="8" y="130" font-family="monospace" font-size="7" fill="#4a4845">160m</text><text x="8" y="84" font-family="monospace" font-size="7" fill="#4a4845">180m</text>
-      <line x1="38" y1="264" x2="700" y2="264" stroke="#1e2124" stroke-width="0.3" stroke-dasharray="3,5"/><line x1="38" y1="218" x2="700" y2="218" stroke="#1e2124" stroke-width="0.3" stroke-dasharray="3,5"/><line x1="38" y1="172" x2="700" y2="172" stroke="#1e2124" stroke-width="0.3" stroke-dasharray="3,5"/><line x1="38" y1="126" x2="700" y2="126" stroke="#1e2124" stroke-width="0.3" stroke-dasharray="3,5"/>
-      <text x="50" y="300" font-family="monospace" font-size="7" fill="#4a4845">0.0</text><text x="185" y="300" font-family="monospace" font-size="7" fill="#4a4845">0.5km</text><text x="325" y="300" font-family="monospace" font-size="7" fill="#4a4845">1.2km</text><text x="455" y="300" font-family="monospace" font-size="7" fill="#4a4845">2.0km</text><text x="570" y="300" font-family="monospace" font-size="7" fill="#4a4845">2.7km</text><text x="680" y="300" font-family="monospace" font-size="7" fill="#4a4845">~3.2km</text>
-      <path d="M50,120 C88,118 118,122 165,128 C210,136 250,150 300,168 C350,186 390,200 430,208 C470,214 490,210 520,204 C545,198 565,201 590,208 C610,214 625,218 645,220 C665,222 685,222 700,218 L700,280 L50,280Z" fill="url(#tg)" opacity="0.7"/>
-      <path d="M50,120 C88,118 118,122 165,128 C210,136 250,150 300,168 C350,186 390,200 430,208 C470,214 490,210 520,204 C545,198 565,201 590,208 C610,214 625,218 645,220 C665,222 685,222 700,218" fill="none" stroke="url(#rg)" stroke-width="3" filter="url(#gl)"/>
-      <rect x="50" y="50" width="140" height="14" rx="2" fill="#4a5a2b" opacity="0.2"/><text x="120" y="60" font-family="monospace" font-size="6.5" fill="#4a5a2b" text-anchor="middle" letter-spacing="1.5">URBANO</text>
-      <rect x="230" y="50" width="180" height="14" rx="2" fill="#8a7235" opacity="0.2"/><text x="320" y="60" font-family="monospace" font-size="6.5" fill="#8a7235" text-anchor="middle" letter-spacing="1.5">DESCIDA · PONTE · JERRICÃS</text>
-      <rect x="455" y="50" width="120" height="14" rx="2" fill="#8a7235" opacity="0.15"/><text x="515" y="60" font-family="monospace" font-size="6.5" fill="#8a7235" text-anchor="middle" letter-spacing="1.5">TERRA BATIDA</text>
-      <rect x="610" y="50" width="95" height="14" rx="2" fill="#8b2020" opacity="0.3"/><text x="657" y="60" font-family="monospace" font-size="6.5" fill="#8b2020" text-anchor="middle" letter-spacing="1.5">EVACUAÇÃO</text>
-      <circle cx="50" cy="120" r="7" fill="#c8a84e" stroke="#090909" stroke-width="2"/><text x="50" y="123" font-family="sans-serif" font-size="9" fill="#090909" text-anchor="middle" font-weight="700">1</text><text x="50" y="93" font-family="sans-serif" font-size="8" fill="#c8a84e" text-anchor="middle" font-weight="700">CP1·17:40</text><text x="50" y="83" font-family="monospace" font-size="6" fill="#8e8b85" text-anchor="middle">162m</text>
-      <circle cx="190" cy="132" r="7" fill="#c8a84e" stroke="#090909" stroke-width="2"/><text x="190" y="135" font-family="sans-serif" font-size="9" fill="#090909" text-anchor="middle" font-weight="700">2</text><text x="190" y="105" font-family="sans-serif" font-size="8" fill="#c8a84e" text-anchor="middle" font-weight="700">CP2·17:50</text><text x="190" y="95" font-family="monospace" font-size="6" fill="#8e8b85" text-anchor="middle">~155m</text>
-      <rect x="323" y="182" width="5" height="5" fill="#8a7235" transform="rotate(45,326,185)"/><text x="326" y="177" font-family="monospace" font-size="6" fill="#8a7235" text-anchor="middle">PONTE</text>
-      <circle cx="465" cy="210" r="7" fill="#4a5a2b" stroke="#090909" stroke-width="2"/><text x="465" y="213" font-family="sans-serif" font-size="9" fill="#e8e4dc" text-anchor="middle" font-weight="700">3</text><text x="465" y="183" font-family="sans-serif" font-size="8" fill="#4a5a2b" text-anchor="middle" font-weight="700">CP3·18:20</text><text x="465" y="173" font-family="monospace" font-size="6" fill="#8e8b85" text-anchor="middle">~138m</text>
-      <circle cx="625" cy="217" r="7" fill="#8b2020" stroke="#c8a84e" stroke-width="1.5"/><text x="625" y="220" font-family="sans-serif" font-size="9" fill="#e8e4dc" text-anchor="middle" font-weight="700">4</text><text x="625" y="190" font-family="sans-serif" font-size="8" fill="#8b2020" text-anchor="middle" font-weight="700">CP4·18:40</text><text x="625" y="180" font-family="monospace" font-size="6" fill="#8e8b85" text-anchor="middle">~125m</text>
-      <line x1="636" y1="218" x2="690" y2="218" stroke="#8b2020" stroke-width="1" stroke-dasharray="4,3"/><text x="663" y="232" font-family="monospace" font-size="5.5" fill="#8b2020" text-anchor="middle">500m FERIDO</text>
-      <circle cx="700" cy="218" r="9" fill="#8b2020" stroke="#c8a84e" stroke-width="2"/><text x="700" y="221" font-family="sans-serif" font-size="10" fill="#e8e4dc" text-anchor="middle" font-weight="700">5</text><text x="700" y="190" font-family="sans-serif" font-size="8" fill="#c8a84e" text-anchor="middle" font-weight="700">CP5·18:55</text><text x="700" y="180" font-family="monospace" font-size="6" fill="#8e8b85" text-anchor="middle">~120m</text>
-      <rect x="42" y="16" width="660" height="26" rx="4" fill="#0e0e0e" stroke="#333638" stroke-width="0.5"/><text x="54" y="30" font-family="sans-serif" font-size="8" fill="#c8a84e" letter-spacing="2.5" font-weight="700">PERFIL DE ELEVAÇÃO — APAGÃO GLOBAL — 5 CHECKPOINTS</text><text x="54" y="39" font-family="monospace" font-size="6" fill="#555250" letter-spacing="1.5">WGS84 | ~3.2KM | -42M | 17:40→19:15</text>
-    </svg>
-
-    <div class="coords-grid">
-      <div class="coords-item"><div class="coords-label">CP1 17:40</div><div class="coords-value">38.9103°N 9.1666°W</div></div>
-      <div class="coords-item"><div class="coords-label">CP2 17:50</div><div class="coords-value">38.9095°N 9.1640°W</div></div>
-      <div class="coords-item"><div class="coords-label">CP3 18:20</div><div class="coords-value">38.9053°N 9.1530°W</div></div>
-      <div class="coords-item"><div class="coords-label">CP4 18:40</div><div class="coords-value">38.9098°N 9.1425°W</div></div>
-      <div class="coords-item"><div class="coords-label">CP5 18:55</div><div class="coords-value">38.9110°N 9.1389°W</div></div>
-    </div>
-
-    <h2>Notas Topográficas</h2>
-    <div class="topo-item"><div class="topo-seg">CP1→CP2</div><div class="topo-desc"><b>~500m · 10min.</b> Urbano, pavimentado. Chafariz → Coreto.</div></div>
-    <div class="topo-item"><div class="topo-seg">CP2→CP3</div><div class="topo-desc"><b>~1.4km · 20min.</b> Descida -25m. Ponte. Terreno misto. Jerricãs ativos.</div></div>
-    <div class="topo-item"><div class="topo-seg">CP3→CP4</div><div class="topo-desc"><b>~800m · 15min.</b> Estrada do Casalinho. Fim alcatrão → terra batida.</div></div>
-    <div class="topo-item"><div class="topo-seg">CP4→CP5</div><div class="topo-desc"><b>~500m · 15min.</b> <b style="color:#8b2020">EVACUAÇÃO.</b> Ferido + 2 jerricãs. Descida final.</div></div>
   </div>
 
   <!-- ═══ FACILITADOR — MATERIAIS ═══ -->
