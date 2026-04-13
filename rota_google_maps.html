@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROTA GOOGLE MAPS — CONTROLO TOTAL</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f4f0e8;font-family:'Courier New',monospace;color:#222}
+.page{max-width:900px;margin:0 auto;padding:20px}
+
+/* Header */
+.hdr{background:#2a2a2a;padding:16px 24px;border-radius:6px 6px 0 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.hdr h1{font-family:Arial,sans-serif;font-size:20px;color:#c8a84e;letter-spacing:3px;text-transform:uppercase}
+.hdr .tag{font-size:9px;color:#8b2020;letter-spacing:3px;text-transform:uppercase}
+.hdr .date{font-size:11px;color:#94918b}
+
+/* Map container */
+.map-wrap{position:relative;width:100%;height:0;padding-bottom:56%;background:#ddd;border:2px solid #2a2a2a;border-top:none}
+.map-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.map-fallback{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#e8e4dc;text-align:center;padding:20px}
+.map-fallback a{display:inline-block;margin-top:12px;padding:12px 28px;background:#cc0000;color:white;text-decoration:none;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:1px}
+.map-fallback a:hover{background:#aa0000}
+
+/* CP strip below map */
+.cp-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:2px}
+.cp-card{padding:12px;text-align:center}
+.cp-card:nth-child(1){background:#4a5a2b;color:white}
+.cp-card:nth-child(2){background:#4a7a2b;color:white}
+.cp-card:nth-child(3){background:#7a6a2b;color:white}
+.cp-card:nth-child(4){background:#8b3a20;color:white}
+.cp-card:nth-child(5){background:#8b2020;color:white}
+.cp-card .num{font-family:Arial,sans-serif;font-size:22px;font-weight:700}
+.cp-card .name{font-size:10px;letter-spacing:1px;margin-top:2px;text-transform:uppercase}
+.cp-card .alt{font-size:9px;opacity:0.8;margin-top:2px}
+.cp-card .time{font-size:10px;font-weight:700;margin-top:4px;background:rgba(0,0,0,0.2);padding:2px 6px;border-radius:3px;display:inline-block}
+
+/* Details section -->
+.details{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.detail-box{background:white;border:1px solid #ccc;border-radius:6px;padding:16px}
+.detail-box h3{font-family:Arial,sans-serif;font-size:13px;color:#cc0000;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #eee}
+.detail-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f4f0e8;font-size:12px}
+.detail-row:last-child{border-bottom:none}
+.detail-row .label{color:#666}
+.detail-row .value{font-weight:700;color:#222}
+.detail-row .value.red{color:#8b2020}
+
+/* QR / Link section */
+.link-bar{margin-top:16px;background:#2a2a2a;padding:14px 24px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.link-bar .url{color:#c8a84e;font-size:11px;word-break:break-all}
+.link-bar .label{color:#94918b;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+
+/* Footer -->
+.footer{margin-top:16px;text-align:center;font-size:9px;color:#999;letter-spacing:2px;text-transform:uppercase;padding:12px}
+
+/* Print styles */
+@media print{
+  body{background:white}
+  .page{padding:0;max-width:100%}
+  .map-wrap{padding-bottom:50%;border-width:1px}
+  .link-bar{background:#333!important}
+  *{color-adjust:exact;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(max-width:640px){
+  .cp-strip{grid-template-columns:repeat(3,1fr)}
+  .details{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="hdr">
+    <div>
+      <div class="tag">▲ ROTA OPERACIONAL ▲</div>
+      <h1>Rota Google Maps — Controlo Total</h1>
+    </div>
+    <div class="date">17 ABR 2026 · ~3.2km · Chamboeira → Base Sniper</div>
+  </div>
+
+  <!-- Embedded Map -->
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3!2d-9.153!3d38.908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s!2sU.C.R.+Chamboeira!3m2!1d38.9103!2d-9.1666!4m5!1s!2sParque+Aventura+Sniper!3m2!1d38.9110!2d-9.1389!5e1!3m2!1spt-PT!2spt!4v1"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen>
+    </iframe>
+    <!-- Fallback if iframe doesn't load (print or offline) -->
+    <noscript>
+      <div class="map-fallback">
+        <p style="font-size:14px;color:#666">Mapa Google Maps — abrir no browser</p>
+        <a href="https://maps.app.goo.gl/X5bZhhDG4bEdohiL9" target="_blank">ABRIR ROTA NO GOOGLE MAPS</a>
+      </div>
+    </noscript>
+  </div>
+
+  <!-- CP Strip -->
+  <div class="cp-strip">
+    <div class="cp-card">
+      <div class="num">CP1</div>
+      <div class="name">U.C.R. Chamboeira</div>
+      <div class="alt">162m alt.</div>
+      <div class="time">17:40</div>
+    </div>
+    <div class="cp-card">
+      <div class="num">CP2</div>
+      <div class="name">Coreto</div>
+      <div class="alt">~155m alt.</div>
+      <div class="time">17:50</div>
+    </div>
+    <div class="cp-card">
+      <div class="num">CP3</div>
+      <div class="name">Bifurcação</div>
+      <div class="alt">~138m alt.</div>
+      <div class="time">18:20</div>
+    </div>
+    <div class="cp-card">
+      <div class="num">CP4</div>
+      <div class="name">Evacuação</div>
+      <div class="alt">~125m alt.</div>
+      <div class="time">18:40</div>
+    </div>
+    <div class="cp-card">
+      <div class="num">CP5</div>
+      <div class="name">Base Sniper</div>
+      <div class="alt">~120m alt.</div>
+      <div class="time">18:55</div>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div class="details">
+    <div class="detail-box">
+      <h3>Coordenadas GPS (WGS84)</h3>
+      <div class="detail-row"><span class="label">CP1 — Chamboeira</span><span class="value">38.9103°N, 9.1666°W</span></div>
+      <div class="detail-row"><span class="label">CP2 — Coreto</span><span class="value">38.9095°N, 9.1640°W</span></div>
+      <div class="detail-row"><span class="label">CP3 — Bifurcação</span><span class="value">38.9053°N, 9.1530°W</span></div>
+      <div class="detail-row"><span class="label">CP4 — Evacuação</span><span class="value red">38.9098°N, 9.1425°W</span></div>
+      <div class="detail-row"><span class="label">CP5 — Base Sniper</span><span class="value red">38.9110°N, 9.1389°W</span></div>
+    </div>
+    <div class="detail-box">
+      <h3>Trechos e Azimutes</h3>
+      <div class="detail-row"><span class="label">CP1 → CP2</span><span class="value">500m · AZ 112° ESE</span></div>
+      <div class="detail-row"><span class="label">CP2 → CP3</span><span class="value">1.4km · AZ 116° ESE</span></div>
+      <div class="detail-row"><span class="label">CP3 → CP4</span><span class="value">800m · AZ 061° ENE</span></div>
+      <div class="detail-row"><span class="label">CP4 → CP5</span><span class="value red">500m · AZ 067° ENE</span></div>
+      <div class="detail-row"><span class="label">Total</span><span class="value">~3.2km · Desnível -42m</span></div>
+    </div>
+  </div>
+
+  <!-- Link Bar -->
+  <div class="link-bar">
+    <div>
+      <div class="label">Rota Google Maps — Abrir no telemóvel ou desktop</div>
+      <div class="url">https://maps.app.goo.gl/X5bZhhDG4bEdohiL9</div>
+    </div>
+    <div>
+      <div class="label">Tempo estimado</div>
+      <div style="color:#c8a84e;font-size:16px;font-weight:700">~85 min</div>
+    </div>
+    <div>
+      <div class="label">Limite absoluto</div>
+      <div style="color:#8b2020;font-size:16px;font-weight:700">19:15H</div>
+    </div>
+  </div>
+
+  <div class="footer">Operação Controlo Total · Miguel Delgado · 17 Abril 2026 · Classificado</div>
+
+</div>
+
+</body>
+</html>

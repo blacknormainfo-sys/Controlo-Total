@@ -591,6 +591,63 @@ p b, p strong { color: var(--tx); }
 }
 .mat-item b { color: var(--tx); display: block; margin-bottom: 2px; }
 
+/* ─── DOWNLOADS ─── */
+.dl-section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--st);
+}
+.dl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+.dl-card {
+  background: var(--card);
+  border: 1px solid var(--st);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.dl-card:hover {
+  border-color: var(--ac);
+  background: rgba(200,168,78,0.05);
+  transform: translateY(-2px);
+}
+.dl-icon { font-size: 28px; }
+.dl-name {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tx);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.dl-desc {
+  font-size: 11px;
+  color: var(--t2);
+  line-height: 1.4;
+}
+.dl-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+.dl-badge.green { background: rgba(74,90,43,0.2); color: var(--green); }
+.dl-badge.blue { background: rgba(58,106,170,0.15); color: var(--blue); }
+.dl-badge.orange { background: rgba(170,122,58,0.15); color: var(--orange); }
+.dl-badge.red { background: rgba(170,58,58,0.15); color: var(--red); }
+.dl-badge.gold { background: rgba(200,168,78,0.15); color: var(--ac); }
+
 /* ─── FOOTER ─── */
 footer {
   text-align: center;
@@ -636,6 +693,7 @@ footer .copy {
     <a href="#" class="brand">Controlo Total</a>
     <div class="links">
       <a href="#cp1" class="active">CP1 Missão</a>
+      <a href="#downloads">Downloads</a>
       <a href="#cp2-radio">CP2 Rádio</a>
       <a href="#cp2-mapa">CP2 Mapa</a>
       <a href="#facilitador">Facilitador</a>
@@ -645,6 +703,49 @@ footer .copy {
 </nav>
 
 <main class="container">
+
+  <!-- ═══ DOWNLOADS ═══ -->
+  <div class="dl-section" id="downloads">
+    <h2 style="border-bottom:none;margin-bottom:0">Downloads</h2>
+    <p style="color:var(--t2);font-size:13px">Descarrega os materiais em PDF — prontos a imprimir.</p>
+
+    <div class="dl-grid">
+      <a href="downloads/missao_completa.pdf" class="dl-card" download>
+        <div class="dl-icon">📋</div>
+        <div class="dl-name">Total</div>
+        <div class="dl-desc">Pack completo com todas as páginas de missão</div>
+        <div class="dl-badge gold">5 páginas · PDF</div>
+      </a>
+
+      <a href="downloads/entrega_participantes.pdf" class="dl-card" download>
+        <div class="dl-icon">📦</div>
+        <div class="dl-name">Participantes</div>
+        <div class="dl-desc">Carta de missão para entregar à equipa no CP1</div>
+        <div class="dl-badge green">Entregar CP1</div>
+      </a>
+
+      <a href="downloads/mapas.pdf" class="dl-card" download>
+        <div class="dl-icon">🗺️</div>
+        <div class="dl-name">Mapas</div>
+        <div class="dl-desc">Carta topográfica militar + rota Google Maps</div>
+        <div class="dl-badge orange">2 mapas · PDF</div>
+      </a>
+
+      <a href="downloads/protocolo_radio.pdf" class="dl-card" download>
+        <div class="dl-icon">📡</div>
+        <div class="dl-name">Protocolo Rádio</div>
+        <div class="dl-desc">Mensagens codificadas para o Transmissões</div>
+        <div class="dl-badge blue">Entregar CP2</div>
+      </a>
+
+      <a href="downloads/codigo.pdf" class="dl-card" download>
+        <div class="dl-icon">🔐</div>
+        <div class="dl-name">Código</div>
+        <div class="dl-desc">Cartão com o código de acesso para mostrar 15s</div>
+        <div class="dl-badge red">Só Facilitador</div>
+      </a>
+    </div>
+  </div>
 
   <!-- ═══ CP1 — CARTA DE MISSÃO ═══ -->
   <div class="section" id="cp1">
